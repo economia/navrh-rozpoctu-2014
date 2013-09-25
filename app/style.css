@@ -4,9 +4,13 @@ body {
   font-size: 0.8em;
 }
 #chart {
-  width: 960px;
-  height: 500px;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
   background: #bbb;
+  overflow: hidden;
 }
 
 text {

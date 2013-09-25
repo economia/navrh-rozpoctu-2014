@@ -11,10 +11,11 @@
     <div id="chart"></div>
     <script src="http://service.ihned.cz/js/d3/v3.3.2.min.js"></script>
     <script>
-
+    var totalWidth = window.innerWidth;
+    var totalHeight = window.innerHeight;
     var margin = {top: 20, right: 0, bottom: 0, left: 0},
-        width = 960,
-        height = 500 - margin.top - margin.bottom,
+        width = totalWidth - margin.right - margin.left,
+        height = totalHeight - margin.top - margin.bottom,
         formatNumber = d3.format(",d"),
         transitioning;
 

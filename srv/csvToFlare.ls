@@ -28,8 +28,7 @@ lines.forEach (line) ->
             lastKapitola = kapitola
             lastKapitolaObject = getObjectByName kapitola
     financniMistoObject = getObjectByName financni_misto, kapitolaObject
-    akceObject = getObjectByName akce, financniMistoObject
     castka = parseFloat castka
-    akceObject.children.push {name: rozpoctova_polozka, value: castka}
+    financniMistoObject.children.push {name: rozpoctova_polozka, value: castka}
 json = JSON.stringify output, null, "  "
 fs.writeFile "#__dirname/../app/rozpocet.json", json

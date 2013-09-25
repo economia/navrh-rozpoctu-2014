@@ -1,0 +1,21 @@
+{
+  "name": "navrh-rozpoctu-2014",
+  "version": "0.0.0",
+  "description": "[Datablog](http://ihned.cz/data/) portálu [IHNED.cz](http://ihned.cz/) vydavatelství [e.conomia](http://economia.ihned.cz/)",
+  "main": "app/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/economia/navrh-rozpoctu-2014.git"
+  },
+  "author": "DataIHNED",
+  "license": "CC-BY-NC-SA CZ",
+  "bugs": {
+    "url": "https://github.com/economia/navrh-rozpoctu-2014/issues"
+  },
+  "dependencies": {
+    "csv": "~0.3.6"
+  }
+}

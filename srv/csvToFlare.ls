@@ -19,7 +19,6 @@ clearSingleChildren = (parent = output) ->
 (err, data) <~ fs.readFile "#__dirname/../data/rozpocet14Vydaje.txt"
 data .= toString!
 lines = data.split "\n"
-# lines.length = 20
 lastKapitola = null
 lastKapitolaObject = null
 lines.forEach (line) ->

@@ -2,12 +2,16 @@ require! {
     fs
 }
 output = {name: \Ropzpočet children: []}
-getObjectByName = (name, parent = output) ->
+getObjectByName = (name, parent = output, createChildren = yes) ->
     parentChildren = parent.children
     for child in parentChildren
         if child.name == name
             return child
-    newKapitola = {name, children: []}
+    newKapitola = {name}
+    if createChildren
+        newKapitola.children = []
+    else
+        newKapitola.value = 0
     parentChildren.push newKapitola
     newKapitola
 clearSingleChildren = (parent = output) ->
@@ -32,8 +36,8 @@ lines.forEach (line) ->
             lastKapitola = kapitola
             lastKapitolaObject = getObjectByName kapitola
     financniMistoObject = getObjectByName financni_misto, kapitolaObject
-    castka = parseFloat castka
-    financniMistoObject.children.push {name: rozpoctova_polozka, value: castka}
+    vydaj = getObjectByName rozpoctova_polozka, financniMistoObject, no
+        ..value += parseFloat castka
 
 clearSingleChildren!
 json = JSON.stringify output, null, "  "

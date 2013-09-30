@@ -16,7 +16,9 @@ body {
 text {
   pointer-events: none;
 }
-
+text.small {
+  display: none;
+}
 .grandparent text {
   font-weight: bold;
 }

@@ -157,6 +157,7 @@
 
         g.append("text")
           .attr("clip-path", function(d) { return "url(#clip-" + d.clipId + ")"; })
+          .classed("small", function(d) {return y(d.y + d.dy) - y(d.y) < 22})
           .attr("dy", ".75em")
           .text(function(d) { return d.name; })
           .call(text);

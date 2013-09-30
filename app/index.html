@@ -14,6 +14,7 @@
     var totalWidth = window.innerWidth;
     var totalHeight = window.innerHeight;
     var clipId = 0;
+    var color = d3.scale.category20();
     var margin = {top: 20, right: 0, bottom: 0, left: 0},
         width = totalWidth - margin.right - margin.left,
         height = totalHeight - margin.top - margin.bottom,
@@ -126,13 +127,16 @@
 
         g.append("rect")
             .attr("class", "parent")
+            .attr('fill', function(d) {
+              d.clipId = clipId++;
+              return color(d.clipId);
+            })
             .call(rect)
           .append("title")
             .text(function(d) { return formatNumber(d.value); });
 
         g.append("clipPath")
             .attr('id', function(d) {
-              d.clipId = clipId++;
               return "clip-" + d.clipId;
             })
             .append("rect")

@@ -9,7 +9,7 @@ body {
   top: 0px;
   left: 0px;
   bottom: 0px;
-  background: #bbb;
+  background: #fff;
   overflow: hidden;
 }
 
@@ -22,10 +22,12 @@ text {
 }
 
 rect {
-  fill: none;
   stroke: #fff;
 }
 
+rect.child {
+  fill: none;
+}
 rect.parent,
 .grandparent rect {
   stroke-width: 2px;
@@ -36,7 +38,7 @@ rect.parent,
 }
 
 .grandparent:hover rect {
-  fill: #ee9700;
+  opacity: 0.7;
 }
 
 .children rect.parent,
@@ -48,6 +50,6 @@ rect.parent {
   pointer-events: all;
 }
 
-.children:hover rect.child {
-  fill: #aaa;
+.children:hover {
+  opacity: 0.7;
 }

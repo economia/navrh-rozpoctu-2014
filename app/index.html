@@ -138,13 +138,11 @@
             .append("rect")
               .call(rect);
 
-        g.append("g")
+        g.append("text")
           .attr("clip-path", function(d) { return "url(#clip-" + d.clipId + ")"; })
-          .attr("overflow", "hidden")
-          .append("text")
-            .attr("dy", ".75em")
-            .text(function(d) { return d.name; })
-            .call(text);
+          .attr("dy", ".75em")
+          .text(function(d) { return d.name; })
+          .call(text);
 
         function transition(d) {
           if (transitioning || !d) return;

@@ -4,13 +4,17 @@
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
       <title>Nejdražší aukce umění</title>
+      <link rel="stylesheet" type="text/css" href="http://service.ihned.cz/js/tooltip/v1.1.css" />
       <link rel="stylesheet" type="text/css" href="style.css" />
+      <script src="http://service.ihned.cz/js/jquery.min.js"></script>
+      <script src="http://service.ihned.cz/js/tooltip/v1.1.js"></script>
     </head>
     <body>
 
     <div id="chart"></div>
     <script src="http://service.ihned.cz/js/d3/v3.3.2.min.js"></script>
     <script>
+    new Tooltip().watchElements();
     var totalWidth = window.innerWidth;
     var totalHeight = window.innerHeight;
     var clipId = 0;
@@ -18,7 +22,15 @@
     var margin = {top: 20, right: 0, bottom: 0, left: 0},
         width = totalWidth - margin.right - margin.left,
         height = totalHeight - margin.top - margin.bottom,
-        formatNumber = d3.format(",d"),
+        formatNumber = function(num) {
+          if(num > 1e9) {
+            return Math.round(num / 1e9) + "&nbsp;mld.&nbsp;Kč"
+          } else if (num > 1e6) {
+            return Math.round(num / 1e6) + "&nbsp;mil.&nbsp;Kč"
+          } else {
+            return num + "&nbsp;Kč";
+          }
+        } ,
         transitioning;
 
     var x = d3.scale.linear()
@@ -131,9 +143,10 @@
               d.clipId = clipId++;
               return color(d.clipId);
             })
+            .attr('data-tooltip', function(d) {
+              return d.name + ": " + formatNumber(d.value);
+            })
             .call(rect)
-          .append("title")
-            .text(function(d) { return formatNumber(d.value); });
 
         g.append("clipPath")
             .attr('id', function(d) {

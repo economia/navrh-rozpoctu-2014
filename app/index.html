@@ -19,6 +19,12 @@
     var totalHeight = window.innerHeight;
     var clipId = 0;
     var color = d3.scale.category20();
+    var backButton = d3.select("#chart")
+      .append("a")
+      .attr("class", "backButton disabled");
+    backButton
+      .append("img")
+        .attr("src","img/back.png");
     var margin = {top: 20, right: 0, bottom: 0, left: 0},
         width = totalWidth - margin.right - margin.left,
         height = totalHeight - margin.top - margin.bottom,
@@ -113,6 +119,14 @@
       }
 
       function display(d) {
+        if(d.parent) {
+          backButton
+            .classed("disabled", false)
+            .datum(d.parent)
+            .on("click", transition);
+        } else {
+          backButton.classed("disabled", true);
+        }
         grandparent
             .datum(d.parent)
             .on("click", transition)

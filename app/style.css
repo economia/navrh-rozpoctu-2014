@@ -58,3 +58,9 @@ rect.parent {
 .tooltip {
   max-width: 400px;
 }
+
+body a.backButton{position:absolute;top:45px;left:10px;display:block;width:38px;height:38px;border:2px solid #1d1d1d;transition:left 1s;border-radius:50%;-o-border-radius:50%;-ms-border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%;background:#fff;}
+body a.backButton:hover{background-color:#ddd;cursor:pointer}
+body a.backButton:active{background-color:#aaa}
+body a.backButton img{position:absolute;top:-2px;left:-2px;border:0}
+body a.backButton.disabled{left:-80px}
